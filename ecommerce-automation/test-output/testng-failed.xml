@@ -5,7 +5,7 @@
     <classes>
       <class name="com.selenium.test.ecommerce_automation.ECommerce">
         <methods>
-          <include name="addToCart"/>
+          <include name="checkoutPage"/>
         </methods>
       </class> <!-- com.selenium.test.ecommerce_automation.ECommerce -->
     </classes>
