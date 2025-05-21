@@ -47,6 +47,65 @@ public class demoWebShop {
 		}
 		driver.quit();
 	}
+	
+	@Test
+	public void addToCart() throws InterruptedException {
+		WebDriverManager.chromiumdriver().setup();
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://demowebshop.tricentis.com/");
+		Thread.sleep(5000);
+		driver.findElement(By.xpath("//*[@id=\"small-searchterms\"]")).sendKeys("Laptop");
+		driver.findElement(By.cssSelector("body > div.master-wrapper-page > div.master-wrapper-content > div.header > div.search-box > form > input.button-1.search-box-button")).click();
+		
+		//Assert 1
+		String actualURL = driver.getCurrentUrl();
+		String expectedURL = "https://demowebshop.tricentis.com/search?q=Laptop";
+		if(actualURL.matches(expectedURL)) {
+			System.out.println("Product Search Successful!");
+		}
+		else {
+			System.out.println("URL does not match!!");
+		}
+		
+		driver.findElement(By.xpath("/html/body/div[4]/div[1]/div[4]/div[2]/div/div[2]/div[3]/div[1]/div/div/div[1]/a/img")).click();
+		WebElement actualTextStore = driver.findElement(By.xpath("//*[@id=\"product-details-form\"]/div/div[1]/div[2]/div[1]"));
+		System.out.println(actualTextStore);
+		//Assert 2
+		String actualText = actualTextStore.getText();
+		String expectedText = "//*[@id=\"product-details-form\"]/div/div[1]/div[2]/div[1]";
+		if(actualText.matches(expectedText)) {
+			System.out.println("Correct Product Selected!");
+		}
+		else {
+			System.out.println("Incorrect Product!!");
+		}
+		
+		driver.findElement(By.xpath("//*[@id=\"add-to-cart-button-31\"]")).click();
+		Thread.sleep(1000);
+		WebElement addToCrtBtn = driver.findElement(By.xpath("/html/body/div[3]/p/text()"));
+		
+		//Assert 3
+		String PrdctAddToCrt = addToCrtBtn.getText();
+		String expectedTextPrdct = "The product has been added to your ";
+		if(PrdctAddToCrt.matches(expectedTextPrdct)) {
+			System.out.println("Product Added to Cart Successfully!");
+		}
+		else {
+			System.out.println("Something Went Wrong!!");
+		}
+		
+		driver.findElement(By.xpath("//*[@id=\"bar-notification\"]/p/a")).click();
+		String actualCartURL = driver.getCurrentUrl();
+		String expectedCartURL = "https://demowebshop.tricentis.com/cart";
+		if(actualCartURL.matches(expectedCartURL)) {
+			System.out.println("Welcome to Checkout Page!");
+		}
+		else {
+			System.out.println("Something Went Wrong!!");
+		}
+		
+		driver.quit();
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
