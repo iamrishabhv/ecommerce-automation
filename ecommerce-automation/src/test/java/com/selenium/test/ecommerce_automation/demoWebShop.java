@@ -56,11 +56,12 @@ public class demoWebShop {
 		Thread.sleep(5000);
 		driver.findElement(By.xpath("//*[@id=\"small-searchterms\"]")).sendKeys("Laptop");
 		driver.findElement(By.cssSelector("body > div.master-wrapper-page > div.master-wrapper-content > div.header > div.search-box > form > input.button-1.search-box-button")).click();
+		Thread.sleep(1000);
 		
 		//Assert 1
 		String actualURL = driver.getCurrentUrl();
 		String expectedURL = "https://demowebshop.tricentis.com/search?q=Laptop";
-		if(actualURL.matches(expectedURL)) {
+		if(actualURL.equals(expectedURL)) {
 			System.out.println("Product Search Successful!");
 		}
 		else {
@@ -68,12 +69,14 @@ public class demoWebShop {
 		}
 		
 		driver.findElement(By.xpath("/html/body/div[4]/div[1]/div[4]/div[2]/div/div[2]/div[3]/div[1]/div/div/div[1]/a/img")).click();
-		WebElement actualTextStore = driver.findElement(By.xpath("//*[@id=\"product-details-form\"]/div/div[1]/div[2]/div[1]"));
-		System.out.println(actualTextStore);
+		Thread.sleep(2000);
+		WebElement actualTextStore = driver.findElement(By.xpath("/html/body/div[4]/div[1]/div[4]/div[2]/div[1]/ul/li[4]/strong"));
+		
+		
 		//Assert 2
 		String actualText = actualTextStore.getText();
-		String expectedText = "//*[@id=\"product-details-form\"]/div/div[1]/div[2]/div[1]";
-		if(actualText.matches(expectedText)) {
+		String expectedText = "14.1-inch Laptop";
+		if(actualText.equalsIgnoreCase(expectedText)) {
 			System.out.println("Correct Product Selected!");
 		}
 		else {
@@ -82,12 +85,12 @@ public class demoWebShop {
 		
 		driver.findElement(By.xpath("//*[@id=\"add-to-cart-button-31\"]")).click();
 		Thread.sleep(1000);
-		WebElement addToCrtBtn = driver.findElement(By.xpath("/html/body/div[3]/p/text()"));
+		WebElement addToCrtBtn = driver.findElement(By.xpath("//*[@id=\"bar-notification\"]/p"));
 		
 		//Assert 3
 		String PrdctAddToCrt = addToCrtBtn.getText();
-		String expectedTextPrdct = "The product has been added to your ";
-		if(PrdctAddToCrt.matches(expectedTextPrdct)) {
+		String expectedTextPrdct = "The product has been added to your shopping cart";
+		if(PrdctAddToCrt.equalsIgnoreCase(expectedTextPrdct)) {
 			System.out.println("Product Added to Cart Successfully!");
 		}
 		else {

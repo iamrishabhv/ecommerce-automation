@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.selenium.test.ecommerce_automation.ECommerce">
+      <class name="com.selenium.test.ecommerce_automation.demoWebShop">
         <methods>
-          <include name="checkoutPage"/>
+          <include name="addToCart"/>
         </methods>
-      </class> <!-- com.selenium.test.ecommerce_automation.ECommerce -->
+      </class> <!-- com.selenium.test.ecommerce_automation.demoWebShop -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
