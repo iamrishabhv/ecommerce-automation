@@ -1,6 +1,9 @@
 package com.selenium.test.ecommerce_automation;
 
 import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertEquals;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -107,7 +110,38 @@ public class demoWebShop {
 			System.out.println("Something Went Wrong!!");
 		}
 		
-		driver.quit();
+		WebElement countryDD = driver.findElement(By.xpath("//*[@id=\"CountryId\"]"));
+		countryDD.sendKeys("India");
+		countryDD.click();
+		driver.findElement(By.xpath("//*[@id=\"ZipPostalCode\"]")).sendKeys("110074");
+		driver.findElement(By.xpath("/html/body/div[4]/div[1]/div[4]/div/div/div[2]/div/form/div[2]/div[1]/div[2]/div/div[3]/div[4]/input")).click();
+		driver.findElement(By.xpath("//*[@id=\"termsofservice\"]")).click();
+		driver.findElement(By.xpath("//*[@id=\"checkout\"]")).click();
+		Thread.sleep(3000);
+		
+		//Sign In Page Assert
+		String actualSignInPageURL = driver.getCurrentUrl();
+		String expectedSignInPageURL = "https://demowebshop.tricentis.com/login/checkoutasguest?returnUrl=%2Fcart";
+		if(actualSignInPageURL.equalsIgnoreCase(expectedSignInPageURL)) {
+			System.out.println("Welcome, Please Sign In!");
+		}
+		else {
+			System.out.println("Something Went Wrong!!");
+		}
+		
+		//Registering a New User
+		driver.findElement(By.xpath("/html/body/div[4]/div[1]/div[4]/div[2]/div/div[2]/div[1]/div[1]/div[3]/input[2]")).click();
+		driver.findElement(By.xpath("//*[@id=\"gender-male\"]")).click();
+		driver.findElement(By.xpath("//*[@id=\"FirstName\"]")).sendKeys("John");
+		driver.findElement(By.xpath("//*[@id=\"LastName\"]")).sendKeys("Doe");
+		driver.findElement(By.cssSelector("#Email")).sendKeys("John.Doe@ymm.com");
+		driver.findElement(By.cssSelector("#Password")).sendKeys("Ert@#$2104");
+		driver.findElement(By.cssSelector("#ConfirmPassword")).sendKeys("Ert@#$2104");
+		driver.findElement(By.cssSelector("#register-button")).click();
+		WebElement bodyText = driver.findElement(By.cssSelector("body > div.master-wrapper-page > div.master-wrapper-content > div.master-wrapper-main > div.center-2 > div > div.page-body"));
+		String actualRegisterText = bodyText.getText();
+		String expectedRegisterText = "Your registration completed";
+		assertEquals(actualRegisterText, expectedRegisterText, "Something Went Wrong!!");
 	}
 
 	public static void main(String[] args) {
