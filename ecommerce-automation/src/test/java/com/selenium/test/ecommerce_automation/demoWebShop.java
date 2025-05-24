@@ -4,8 +4,12 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
+import java.time.Duration;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -142,6 +146,63 @@ public class demoWebShop {
 		String actualRegisterText = bodyText.getText();
 		String expectedRegisterText = "Your registration completed";
 		assertEquals(actualRegisterText, expectedRegisterText, "Something Went Wrong!!");
+	}
+	
+	//Update Password for a Existing User
+	@Test
+	public void updatePW() throws InterruptedException {
+		WebDriverManager.chromiumdriver().setup();
+		WebDriver driver = new ChromeDriver();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
+		driver.get("https://demowebshop.tricentis.com/");
+		Thread.sleep(2000);
+		driver.findElement(By.cssSelector("body > div.master-wrapper-page > div.master-wrapper-content > div.header > div.header-links-wrapper > div.header-links > ul > li:nth-child(2) > a")).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("body > div.master-wrapper-page > div.master-wrapper-content > div.master-wrapper-main > div.center-2 > div > div.page-title")));
+		
+		//Enter the Credentials
+		driver.findElement(By.cssSelector("#Email")).sendKeys("John.Doe@reddif.com");
+		Thread.sleep(2000);
+		driver.findElement(By.cssSelector("#Password")).sendKeys("John@#$1234");
+		Thread.sleep(2000);
+		driver.findElement(By.cssSelector("body > div.master-wrapper-page > div.master-wrapper-content > div.master-wrapper-main > div.center-2 > div > div.page-body > div.customer-blocks > div.returning-wrapper > div.form-fields > form > div.buttons > input")).click();
+		
+		//Login Verification
+		WebElement getUN = driver.findElement(By.cssSelector("body > div.master-wrapper-page > div.master-wrapper-content > div.header > div.header-links-wrapper > div.header-links > ul > li:nth-child(1) > a"));
+		String actualUN = getUN.getText();
+		String expectedUN = "John.Doe@reddif.com";
+		if(actualUN.equalsIgnoreCase(expectedUN)) {
+			System.out.printf("Login Successful! Welcome %s", actualUN);
+		}
+		else {
+			System.out.printf("Login Unsuccessful!!");
+		}
+		
+		//Password Change
+		driver.findElement(By.cssSelector("body > div.master-wrapper-page > div.master-wrapper-content > div.header > div.header-links-wrapper > div.header-links > ul > li:nth-child(1) > a")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.cssSelector("body > div.master-wrapper-page > div.master-wrapper-content > div.master-wrapper-main > div.side-2 > div > div.listbox > ul > li:nth-child(7) > a")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.cssSelector("#OldPassword")).sendKeys("John@#$1234");
+		Thread.sleep(2000);
+		driver.findElement(By.cssSelector("#NewPassword")).sendKeys("John@#$2345");
+		Thread.sleep(2000);
+		driver.findElement(By.cssSelector("#ConfirmNewPassword")).sendKeys("John@#$2345");
+		Thread.sleep(2000);
+		driver.findElement(By.cssSelector("body > div.master-wrapper-page > div.master-wrapper-content > div.master-wrapper-main > div.center-2 > form > div > div.page-body > div.buttons > input")).click();
+		Thread.sleep(2000);
+		
+		//PW Change Verification
+		WebElement PWChngConfrm = driver.findElement(By.cssSelector("body > div.master-wrapper-page > div.master-wrapper-content > div.master-wrapper-main > div.center-2 > form > div > div.page-body > div.result"));
+		String actualPWChngText = PWChngConfrm.getText();
+		String expectedPWChngText = "Password was changed";
+		if(actualPWChngText.equalsIgnoreCase(expectedPWChngText)) {
+			System.out.println("Password Change Successful!");
+		}
+		else {
+			System.out.println("Password Change Unsuccessful!!");
+		}
+		Thread.sleep(5000);
+		driver.quit();
 	}
 
 	public static void main(String[] args) {

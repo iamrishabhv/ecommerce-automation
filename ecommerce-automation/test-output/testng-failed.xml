@@ -5,7 +5,7 @@
     <classes>
       <class name="com.selenium.test.ecommerce_automation.demoWebShop">
         <methods>
-          <include name="addToCart"/>
+          <include name="updatePW"/>
         </methods>
       </class> <!-- com.selenium.test.ecommerce_automation.demoWebShop -->
     </classes>

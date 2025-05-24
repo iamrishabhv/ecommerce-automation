@@ -2,15 +2,15 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-05-22T20:38:00 IST" name="Default suite" finished-at="2025-05-22T20:38:27 IST" duration-ms="26139">
+  <suite started-at="2025-05-24T12:59:22 IST" name="Default suite" finished-at="2025-05-24T12:59:55 IST" duration-ms="33143">
     <groups>
     </groups>
-    <test started-at="2025-05-22T20:38:00 IST" name="Default test" finished-at="2025-05-22T20:38:27 IST" duration-ms="26139">
+    <test started-at="2025-05-24T12:59:22 IST" name="Default test" finished-at="2025-05-24T12:59:55 IST" duration-ms="33143">
       <class name="com.selenium.test.ecommerce_automation.demoWebShop">
-        <test-method signature="addToCart()[pri:0, instance:com.selenium.test.ecommerce_automation.demoWebShop@42a48628]" started-at="2025-05-22T20:38:00 IST" name="addToCart" finished-at="2025-05-22T20:38:27 IST" duration-ms="26096" status="PASS">
+        <test-method signature="updatePW()[pri:0, instance:com.selenium.test.ecommerce_automation.demoWebShop@4c371370]" started-at="2025-05-24T12:59:22 IST" name="updatePW" finished-at="2025-05-24T12:59:55 IST" duration-ms="33100" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- addToCart -->
+        </test-method> <!-- updatePW -->
       </class> <!-- com.selenium.test.ecommerce_automation.demoWebShop -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
