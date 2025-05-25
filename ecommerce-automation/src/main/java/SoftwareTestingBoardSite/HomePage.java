@@ -4,15 +4,15 @@ import java.util.Scanner;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
 import SoftwareTestingBoardSite.DriverConfiguration;
 import SoftwareTestingBoardSite.Constants;
+import SoftwareTestingBoardSite.BaseTest;
 
 public class HomePage {
 	
-	String browser = "chrome";
-	DriverConfiguration DC = new DriverConfiguration();
+	private WebDriver driver;
 	
+	String browser = "chrome";
 	Scanner ip = new Scanner(System.in);
 	String firstName = ip.nextLine();
 	String lastName = ip.nextLine();
