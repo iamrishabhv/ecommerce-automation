@@ -13,11 +13,6 @@ public class HomePage {
 	private WebDriver driver;
 	
 	String browser = "chrome";
-	Scanner ip = new Scanner(System.in);
-	String firstName = ip.nextLine();
-	String lastName = ip.nextLine();
-	String emailAddress = ip.nextLine();
-	String password = ip.nextLine();
 
 	public void WomenPage() {
 		driver.get(Constants.WomenPage);
