@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="software.Testing.Board.Site.CreateAccountTest">
+      <class name="software.Testing.Board.Site.SignInPageTest">
         <methods>
-          <include name="testCreateAccountPage"/>
+          <include name="signInTest_TC2"/>
           <include name="teardown"/>
           <include name="setup"/>
         </methods>
-      </class> <!-- software.Testing.Board.Site.CreateAccountTest -->
+      </class> <!-- software.Testing.Board.Site.SignInPageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
