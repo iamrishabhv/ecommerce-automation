@@ -52,5 +52,35 @@ public class HomePage {
 		}
 		
 	}
+	
+	public void HomePageHeaderElements() throws InterruptedException {
+		driver.get(Constants.HomePage);
+		Thread.sleep(10000);
+		WebElement searchBar = driver.findElement(By.cssSelector("#search"));
+		WebElement signInLink = driver.findElement(By.cssSelector("body > div.page-wrapper > header > div.panel.wrapper > div > ul > li.authorization-link > a"));
+		WebElement createAcPg = driver.findElement(By.cssSelector("body > div.page-wrapper > header > div.panel.wrapper > div > ul > li:nth-child(3) > a"));
+		WebElement cart = driver.findElement(By.cssSelector("body > div.page-wrapper > header > div.header.content > div.minicart-wrapper > a"));
+		WebElement logo = driver.findElement(By.cssSelector("body > div.page-wrapper > header > div.header.content > a > img"));
+		try {
+			if(searchBar.isDisplayed()) {
+				System.out.println("Search Bar is Present.");
+			}
+			if(signInLink.isDisplayed()) {
+				System.out.println("Sign In Link is Present.");
+			}
+			if(createAcPg.isDisplayed()) {
+				System.out.println("Create Account Link is Present.");
+			}
+			if(cart.isDisplayed()) {
+				System.out.println("Cart Link is Present.");
+			}
+			if(logo.isDisplayed()) {
+				System.out.println("Logo is Present.");
+			}
+		}catch(Exception e) {
+			System.out.println("Element not found");
+			e.printStackTrace();
+		}
+	}
 
 }
