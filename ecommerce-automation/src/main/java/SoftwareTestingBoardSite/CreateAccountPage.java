@@ -15,7 +15,7 @@ public class CreateAccountPage {
 		this.driver = driver;
 	}
 	
-	public void CreateAccPage(String firstName, String lastName, String email, String password) {
+	public void CreateAcc(String firstName, String lastName, String email, String password) {
 		driver.get(Constants.CreateAcc);
 		driver.findElement(By.cssSelector("#firstname")).sendKeys(firstName);
 		driver.findElement(By.cssSelector("#lastname")).sendKeys(lastName);

@@ -13,7 +13,6 @@ public class BaseTest {
 	@BeforeMethod
 	public void setup() {
 		driver = DriverConfiguration.initializeDriver("chrome");
-		driver.get(Constants.HomePage);
 	}
 	
 	@AfterMethod
