@@ -6,8 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import SoftwareTestingBoardSite.DriverConfiguration;
-import SoftwareTestingBoardSite.Constants;
+//import SoftwareTestingBoardSite.DriverConfiguration;
+import SoftwareTestingBoardSite.Utils.*;
 import SoftwareTestingBoardSite.BaseTest;
 
 public class HomePage {

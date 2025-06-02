@@ -1,4 +1,4 @@
-package SoftwareTestingBoardSite;
+package SoftwareTestingBoardSite.Utils;
 
 public class Constants {
 	
