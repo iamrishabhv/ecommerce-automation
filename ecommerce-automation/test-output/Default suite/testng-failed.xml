@@ -3,13 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="software.Testing.Board.Site.HomePageTests">
+      <class name="com.selenium.test.ecommerce_automation.WorkInSync">
         <methods>
-          <include name="teardown"/>
-          <include name="TC_HP_001"/>
-          <include name="setup"/>
+          <include name="WIS"/>
         </methods>
-      </class> <!-- software.Testing.Board.Site.HomePageTests -->
+      </class> <!-- com.selenium.test.ecommerce_automation.WorkInSync -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
